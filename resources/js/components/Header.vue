@@ -38,24 +38,24 @@
 </template>
 
 <script>
-  export default {
-    data () {
-      return {
-        drawer: null,
-        items: [
-          { title: 'Dashboard', icon: 'mdi-view-dashboard', name: "#" },
-          { title: 'Account', icon: 'mdi-account-box', name: "#" },
-          { title: 'Admin', icon: 'mdi-gavel', name: "log" },
-        ],
-        csrf_token: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
-      }
+export default {
+  data () {
+    return {
+      drawer: null,
+      items: [
+        { title: 'Dashboard', icon: 'mdi-view-dashboard', name: "#" },
+        { title: 'Account', icon: 'mdi-account-box', name: "#" },
+        { title: 'Admin', icon: 'mdi-gavel', name: "log" },
+      ],
+      csrf_token: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+    }
+  },
+  methods: {
+    logout() {
+      document.getElementById('logout-form').submit()
     },
-    methods: {
-      logout() {
-        document.getElementById('logout-form').submit();
-      },
-    },
-  }
+  },
+}
 </script>
 
 <style scoped>

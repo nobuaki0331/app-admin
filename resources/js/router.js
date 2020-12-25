@@ -1,9 +1,9 @@
-import Vue from 'vue';
-import VueRouter from 'vue-router';
-import Main from './components/Main';
-import LogIndex from './components/Log/Index';
+import Vue from 'vue'
+import VueRouter from 'vue-router'
+import Main from './components/Main'
+import LogIndex from './components/Log/Index'
 
-Vue.use(VueRouter);
+Vue.use(VueRouter)
 
 const routes = [
   {
@@ -16,11 +16,11 @@ const routes = [
     name: 'log',
     component: LogIndex,
   },
-];
+]
 
 const router = new VueRouter({
-    routes,
-    mode: 'history'
-});
+  routes,
+  mode: 'history'
+})
 
-export default router;
+export default router
