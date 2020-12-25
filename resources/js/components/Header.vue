@@ -1,0 +1,65 @@
+<template>
+<div>
+  <v-app-bar color="grey darken-4" dark app clipped-left>
+    <v-app-bar-nav-icon @click="drawer=!drawer"></v-app-bar-nav-icon>
+    <v-toolbar-title>管理画面</v-toolbar-title>
+  </v-app-bar>
+
+  <v-navigation-drawer
+    app
+    v-model="drawer"
+    clipped
+    dark>
+    <v-list>
+      <v-list-item
+        v-for="(item, index) in items"
+        :key="index"
+        link>
+        <v-list-item-icon>
+          <v-icon>{{ item.icon }}</v-icon>
+        </v-list-item-icon>
+        <v-list-item-content>
+          <v-list-item-title >
+            <router-link :to="{ name: item.name }">{{ item.title }}</router-link>
+          </v-list-item-title>
+        </v-list-item-content>
+      </v-list-item>
+    </v-list>
+    <template v-slot:append>
+      <div class="pa-2">
+        <v-btn block v-on:click="logout">Logout</v-btn>
+        <form id="logout-form" action="/logout" method="POST" style="display: none;">
+        <input type="hidden" name="_token" :value=csrf_token>
+        </form>
+      </div>
+    </template>
+  </v-navigation-drawer>
+</div>
+</template>
+
+<script>
+  export default {
+    data () {
+      return {
+        drawer: null,
+        items: [
+          { title: 'Dashboard', icon: 'mdi-view-dashboard', name: "#" },
+          { title: 'Account', icon: 'mdi-account-box', name: "#" },
+          { title: 'Admin', icon: 'mdi-gavel', name: "log" },
+        ],
+        csrf_token: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+      }
+    },
+    methods: {
+      logout() {
+        document.getElementById('logout-form').submit();
+      },
+    },
+  }
+</script>
+
+<style scoped>
+.v-application a {
+    color: white;
+}
+</style>
