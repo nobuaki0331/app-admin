@@ -1,22 +1,21 @@
 <template>
   <div>
     <h1>ここはLOGページ</h1>
-    <v-btn @click="hoge">hoge</v-btn>
+    <v-btn @click="onClickedCsvDownload">CSV出力</v-btn>
   </div>
 </template>
 
 <script>
+import downloadFile from '../../Logic/download'
+
 export default {
   name: 'LogIndex',
   data() {
     return {}
   },
-  mounted() {
-    this.hoge()
-  },
   methods: {
-    hoge() {
-      console.log('hogehoge')
+    onClickedCsvDownload() {
+      downloadFile('api/log/playlog')
     },
   },
 }
