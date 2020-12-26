@@ -3,6 +3,8 @@
   <v-app-bar color="grey darken-4" dark app clipped-left>
     <v-app-bar-nav-icon @click="drawer=!drawer"></v-app-bar-nav-icon>
     <v-toolbar-title>管理画面</v-toolbar-title>
+    <v-spacer></v-spacer>
+    <span class="mr-2">{{ propUserName }}</span>
   </v-app-bar>
 
   <v-navigation-drawer
@@ -39,6 +41,12 @@
 
 <script>
 export default {
+  props: {
+    propUserName: {
+      type: String,
+      required: true,
+    },
+  },
   data () {
     return {
       drawer: null,

@@ -1,3 +1,7 @@
+<?php
+$user = auth()->user();
+?>
+
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
@@ -27,7 +31,7 @@
 @auth
 <div id="app">
     <v-app>
-        <header-component></header-component>
+        <header-component :prop-user-name='@json($user->name)'></header-component>
         <v-main>
             <v-container>
                 <router-view></router-view>
