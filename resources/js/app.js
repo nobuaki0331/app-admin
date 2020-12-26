@@ -5,6 +5,7 @@ import "vuetify/dist/vuetify.min.css"
 import HeaderComponent from './components/Header'
 import Main from './components/Main'
 
+require('./bootstrap')
 Vue.use(Vuetify)
 
 const app = new Vue({
