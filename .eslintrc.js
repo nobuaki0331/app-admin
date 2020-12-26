@@ -6,6 +6,9 @@ module.exports = {
     "comma-spacing": 2,
     "no-unneeded-ternary": 2,
     "no-multi-spaces": 2,
+    "no-console": 1,
+    "eqeqeq": 2,
+    "prefer-const": 2,
   },
   parserOptions: {
     "ecmaVersion": 2017,
