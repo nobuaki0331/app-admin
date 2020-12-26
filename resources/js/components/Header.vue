@@ -44,8 +44,8 @@ export default {
       drawer: null,
       items: [
         { title: 'Dashboard', icon: 'mdi-view-dashboard', name: "#" },
-        { title: 'Account', icon: 'mdi-account-box', name: "#" },
-        { title: 'Admin', icon: 'mdi-gavel', name: "log" },
+        { title: 'アカウント', icon: 'mdi-account-box', name: "account" },
+        { title: 'ログ一覧', icon: 'mdi-gavel', name: "log" },
       ],
       csrf_token: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
     }

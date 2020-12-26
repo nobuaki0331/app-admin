@@ -19,8 +19,11 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('{slash}{any}',
-    [App\Http\Controllers\HomeController::class, 'index'])
-    ->name('index')
-    ->where('slash', '\/?')
-    ->where('any', '.*');
+Route::get('/{any}', function () {
+    return view('home');
+})->where('any', '.*');
+// Route::get('{slash}{any}',
+//     [App\Http\Controllers\HomeController::class, 'index'])
+//     ->name('index')
+//     ->where('slash', '\/?')
+//     ->where('any', '.*');
