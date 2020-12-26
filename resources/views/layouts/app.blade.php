@@ -24,7 +24,7 @@
 </head>
 <body>
 <body>
-<>
+@auth
 <div id="app">
     <v-app>
         <header-component></header-component>
@@ -35,5 +35,11 @@
         </v-main>
     </v-app>
 </div>
+@endauth
+@guest
+<div id="app">
+    @yield('content')
+</div>
+@endguest
 </body>
 </html>
