@@ -42,6 +42,7 @@
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
+        "@vue/composition-api": "^1.0.0-beta.22",
         "vuetify": "^2.4.0"
     }
 }

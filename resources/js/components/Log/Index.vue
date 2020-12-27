@@ -2,21 +2,25 @@
   <div>
     <h1>ここはLOGページ</h1>
     <v-btn @click="onClickedCsvDownload">CSV出力</v-btn>
+    {{ data.message }}
   </div>
 </template>
 
 <script>
+import { createComponent, reactive } from '@vue/composition-api'
 import downloadFile from '../../Logic/download'
 
-export default {
+export default createComponent({
   name: 'LogIndex',
-  data() {
-    return {}
+  setup: () => {
+    const data = reactive({
+      message: "hogehoge"
+    })
+    const onClickedCsvDownload = () => console.log(data.message)
+    return {
+      data,
+      onClickedCsvDownload,
+    }
   },
-  methods: {
-    onClickedCsvDownload() {
-      downloadFile('api/log/playlog')
-    },
-  },
-}
+})
 </script>
