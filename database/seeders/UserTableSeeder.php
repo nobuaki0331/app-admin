@@ -18,8 +18,11 @@ class UserTableSeeder extends Seeder
     {
         User::create([
             'name' => 'test1',
-            'email' => 'test@test.test',
+            'email' => 'test2@test.test',
             'password' => Hash::make('testtest'),
+            'address' => '東京都ホゲホゲ',
+            'tel' => '090-1234-5678',
+            'sex_code' => 1,
             'permission' => 1,
         ]);
 
@@ -30,6 +33,9 @@ class UserTableSeeder extends Seeder
                 'name' => $faker->name,
                 'email' => $faker->email,
                 'password' => Hash::make('testtest'),
+                'address' => $faker->address,
+                'tel' => $faker->phoneNumber,
+                'sex_code' => $faker->randomElement([0,1,2]),
                 'permission' => 0,
             ]);
         }
