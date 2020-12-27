@@ -15,9 +15,12 @@ use App\Http\Controllers\UserController;
 | routes are loaded by the RouteServiceProvider within a group which
 | is assigned the "api" middleware group. Enjoy building your API!
 |
-*/
-Route::group(['middleware' => ['api']], function(){
-    Route::get('hoge', [HogeController::class, 'index']);
-    Route::get('log/playlog', [LogController::class, 'play']);
-    Route::get('account', [UserController::class, 'index']);
+// */
+// Route::group(['middleware' => ['auth:api']], function(){
+//     Route::get('hoge', [HogeController::class, 'index']);
+//     Route::get('log/playlog', [LogController::class, 'play']);
+//     Route::get('account', [UserController::class, 'index']);
+// });
+Route::middleware('auth:api')->get('/user', function (Request $request) {
+    return $request->user();
 });

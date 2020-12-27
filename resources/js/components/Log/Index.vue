@@ -7,10 +7,10 @@
 </template>
 
 <script>
-import { createComponent, reactive } from '@vue/composition-api'
+import { reactive } from '@vue/composition-api'
 import downloadFile from '../../Logic/download'
 
-export default createComponent({
+export default {
   name: 'LogIndex',
   setup: () => {
     const data = reactive({
@@ -22,5 +22,5 @@ export default createComponent({
       onClickedCsvDownload,
     }
   },
-})
+}
 </script>
