@@ -7012,7 +7012,7 @@
             "time": "2020-09-28T06:39:44+00:00"
         },
         {
-            "name": "theseer/tokenizer",
+            "name": "theseer/izer",
             "version": "1.2.0",
             "source": {
                 "type": "git",

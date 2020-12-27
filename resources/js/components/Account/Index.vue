@@ -78,7 +78,8 @@ export default {
   },
   methods: {
     async fetchItem() {
-      const { data } = await axios.get('api/user?api_token=XPhsWe3LMobdRER5hUF3OZWt7dug9IkgX9RhSAiNBN8EYWR9H7dtD1g73kSL')
+      const token = this.$store.state.token
+      const { data } = await axios.get(`api/account?api_token=${token}`)
       console.log(data)
     },
   }
