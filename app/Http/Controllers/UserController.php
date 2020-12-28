@@ -9,7 +9,7 @@ class UserController extends Controller
 {
     public function index()
     {
-        $users = User::all();
+        $users = User::with('prefecture')->orderBy('id', 'desc')->get();
 
         return response($users);
     }

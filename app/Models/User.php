@@ -23,6 +23,7 @@ class User extends Authenticatable
         'permission',
         'sex_code',
         'api_token',
+        'prefecture_id',
     ];
 
     /**
@@ -43,4 +44,11 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    // 都道府県　多対1
+    public function prefecture()
+    {
+        return $this->belongsTo('App\Models\Prefecture');
+    }
+
+
 }
