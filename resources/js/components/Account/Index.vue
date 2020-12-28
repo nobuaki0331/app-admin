@@ -26,7 +26,11 @@
             md="4"
             lg="3">
             <div  class="pl-1 pt-5">
-              <v-btn class="mr-1">追加</v-btn>
+              <v-btn
+                class="mr-1"
+                @click="onAddButtonClicked">
+                追加
+              </v-btn>
               <v-btn class="mr-1">編集</v-btn>
               <v-btn>削除</v-btn>
             </div>
@@ -66,6 +70,9 @@ export default {
       const token = this.$store.state.token
       const { data } = await axios.get(`api/account?api_token=${token}`)
       this.data.users = data
+    },
+    onAddButtonClicked() {
+      this.$router.push({ name: 'account-new' })
     },
   }
 }
