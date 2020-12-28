@@ -22,6 +22,9 @@ const routes = [
     path: '/account/new',
     name: 'account-new',
     component: AccountForm,
+    props: {
+      isNew: true,
+    },
   },
   {
     path: '/account/:id',

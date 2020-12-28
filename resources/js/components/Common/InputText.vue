@@ -19,7 +19,7 @@
 
 <style scoped>
 .label-position {
-  margin-right: 10px;
-  line-height: 2.5;
+  line-height: 3;
+  font-weight: bold;
 }
 </style>

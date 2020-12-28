@@ -23,16 +23,15 @@
           <v-col
             cols="11"
             sm="6"
-            md="4"
-            lg="3">
+            md="3">
             <div  class="pl-1 pt-5">
               <v-btn
                 class="mr-1"
+                color="primary"
                 @click="onAddButtonClicked">
-                追加
+                追加or編集
               </v-btn>
-              <v-btn class="mr-1">編集</v-btn>
-              <v-btn>削除</v-btn>
+              <v-btn color="error">削除</v-btn>
             </div>
           </v-col>
         </v-row>
@@ -43,6 +42,7 @@
 
 <script>
 import { reactive } from '@vue/composition-api'
+
 export default {
   setup: () => {
     const data = reactive({
@@ -68,7 +68,7 @@ export default {
   methods: {
     async fetchItem() {
       const token = this.$store.state.token
-      const { data } = await axios.get(`api/account?api_token=${token}`)
+      const { data } = await axios.get(`/api/account?api_token=${token}`)
       this.data.users = data
     },
     onAddButtonClicked() {
