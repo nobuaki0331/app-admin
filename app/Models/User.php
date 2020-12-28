@@ -26,6 +26,8 @@ class User extends Authenticatable
         'prefecture_id',
     ];
 
+    protected $appends = ['permission_name'];
+
     /**
      * The attributes that should be hidden for arrays.
      *
@@ -50,5 +52,9 @@ class User extends Authenticatable
         return $this->belongsTo('App\Models\Prefecture');
     }
 
+    public function getPermissionNameAttribute(): string
+    {
+        return $this->permission === 0 ? "有" : "無";
+    }
 
 }
