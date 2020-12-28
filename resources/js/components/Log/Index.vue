@@ -16,11 +16,15 @@ export default {
     const data = reactive({
       message: "hogehoge"
     })
-    const onClickedCsvDownload = () => console.log(data.message)
     return {
       data,
-      onClickedCsvDownload,
     }
   },
+  methods: {
+    onClickedCsvDownload() {
+      const token = this.$store.state.token
+      downloadFile(`api/log/playlog?api_token=${token}`)
+    }
+  }
 }
 </script>

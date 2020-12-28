@@ -1,10 +1,10 @@
 <template>
   <div>
     <v-data-table
-      v-model="selected"
-      :headers="headers"
-      :items="users"
-      :single-select="singleSelect"
+      v-model="data.selected"
+      :headers="data.headers"
+      :items="data.users"
+      :single-select="data.singleSelect"
       disable-sort
       item-key="name"
       show-select
@@ -14,7 +14,7 @@
           <v-col
             cols="2">
             <v-switch
-              v-model="singleSelect"
+              v-model="data.singleSelect"
               label="Single select"
               dense
               class="pl-2" />
@@ -38,9 +38,10 @@
 </template>
 
 <script>
+import { reactive } from '@vue/composition-api'
 export default {
-  data () {
-    return {
+  setup: () => {
+    const data = reactive({
       singleSelect: false,
       selected: [],
       headers: [
@@ -52,6 +53,9 @@ export default {
         {　text: '権限',　align: 'center',　value: 'permission_name'},
       ],
       users: [],
+    })
+    return {
+      data,
     }
   },
   mounted() {
@@ -61,7 +65,7 @@ export default {
     async fetchItem() {
       const token = this.$store.state.token
       const { data } = await axios.get(`api/account?api_token=${token}`)
-      this.users = data
+      this.data.users = data
     },
   }
 }

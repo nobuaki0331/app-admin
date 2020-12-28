@@ -9,7 +9,7 @@ use App\Http\Controllers\UserController;
 
 Route::group(['middleware' => ['auth:api']], function(){
     Route::get('log/playlog', [LogController::class, 'play']);
-    Route::get('account', [UserController::class, 'index']);
+    Route::resource('account', UserController::class);
 });
 // Route::middleware('auth:api')->get('/user', function (Request $request) {
 //     return $request->user();
