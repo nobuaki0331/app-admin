@@ -24,7 +24,6 @@ class User extends Authenticatable
         'password',
         'permission',
         'sex_code',
-        'api_token',
         'prefecture_id',
     ];
 

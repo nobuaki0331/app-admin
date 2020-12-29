@@ -83,8 +83,20 @@ export default {
       this.data.form = data
     },
     async onSaveButtonClicked() {
-      const token = this.$store.state.token
-      await axios.post(`/api/account?api_token=${token}`, this.data.form)
+      // 新規登録
+      if (this.isNew) {
+        const token = this.$store.state.token
+        await axios.post(`/api/account?api_token=${token}`, this.data.form)
+        alert('保存成功しました')
+      }
+      // 編集
+      else {
+        const token = this.$store.state.token
+        const userId = this.$route.params.id
+        const response = await axios.put(`/api/account/${userId}?api_token=${token}`, this.data.form)
+        console.log(response)
+        alert('更新成功しました')
+      }
 
       this.$router.push({ name: 'account' })
     },

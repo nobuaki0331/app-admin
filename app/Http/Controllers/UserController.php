@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\CreateUserRequest;
+use App\Http\Requests\UpdateUserRequest;
 use App\Models\User;
 use Illuminate\Support\Arr;
 
@@ -20,7 +22,7 @@ class UserController extends Controller
         return User::find($userId);
     }
 
-    public function store(Request $request)
+    public function store(CreateUserRequest $request)
     {
         $user = User::create([
             'name' => $request->name,
@@ -29,6 +31,14 @@ class UserController extends Controller
             'address' => $request->address,
             'tel' => $request->tel
         ]);
+
+        return response($user);
+    }
+
+    public function update(UpdateUserRequest $request)
+    {
+        $user = new User();
+        $user->fill($request->all())->save();
 
         return response($user);
     }
