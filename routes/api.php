@@ -9,7 +9,8 @@ use App\Http\Controllers\UserController;
 
 Route::group(['middleware' => ['auth:api']], function(){
     Route::get('log/playlog', [LogController::class, 'play']);
-    Route::resource('account', UserController::class, ['except' => ['create']]);
+    Route::resource('account', UserController::class, ['except' => ['create', 'destroy']]);
+    Route::delete('account', [UserController::class, 'destroy']);
 });
 // Route::middleware('auth:api')->get('/user', function (Request $request) {
 //     return $request->user();

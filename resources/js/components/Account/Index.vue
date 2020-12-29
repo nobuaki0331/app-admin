@@ -31,7 +31,11 @@
                 @click="onAddButtonClicked">
                 追加or編集
               </v-btn>
-              <v-btn color="error">削除</v-btn>
+              <v-btn
+                color="error"
+                @click="onDeleteButtonClicked">
+                削除
+              </v-btn>
             </div>
           </v-col>
         </v-row>
@@ -72,7 +76,27 @@ export default {
       this.data.users = data
     },
     onAddButtonClicked() {
-      this.$router.push({ name: 'account-new' })
+      if (this.data.selected.length === 0) {
+        this.$router.push({ name: 'account-new' })
+      } else if(this.data.selected.length === 1){
+        const userId = this.data.selected[0].id
+        this.$router.push({ name: 'account-edit', params: { id: userId } })
+      } else {
+        alert('選択数を１つにしてください')
+      }
+    },
+    async onDeleteButtonClicked() {
+      const token = this.$store.state.token
+      const selectedIds = this.data.selected.map(selectItem => {
+        return selectItem.id
+      })
+      const response = await axios.delete(`/api/account?api_token=${token}`, {
+        params: {
+          ids: selectedIds
+        }
+      })
+
+      this.fetchItem()
     },
   }
 }

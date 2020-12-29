@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Arr;
 
 class UserController extends Controller
 {
@@ -12,6 +13,11 @@ class UserController extends Controller
         $users = User::with('prefecture')->orderBy('id', 'desc')->get();
 
         return response($users);
+    }
+
+    public function show($userId)
+    {
+        return User::find($userId);
     }
 
     public function store(Request $request)
@@ -25,5 +31,12 @@ class UserController extends Controller
         ]);
 
         return response($user);
+    }
+
+    public function destroy() {
+        $inputs = request()->all();
+        $userIds = Arr::pull($inputs, 'ids');
+
+        return User::destroy($userIds);
     }
 }

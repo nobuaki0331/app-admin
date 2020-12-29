@@ -3,6 +3,9 @@
     <v-card-title
       class="font-weight-bold">
       {{ formTitle }}
+      <span v-if="$route.params.id">
+        ユーザーID:{{ $route.params.id }}
+      </span>
     </v-card-title>
     <text-input
       v-model="data.form.name"
@@ -15,6 +18,7 @@
       label="パスワード" />
     <text-input
       v-model="data.form.address"
+      column-size=8
       label="住所" />
     <text-input
       v-model="data.form.tel"
@@ -26,7 +30,7 @@
         <v-btn
           color="primary"
           @click="onSaveButtonClicked">
-          保存
+          {{ isNew ? '保存' : '更新' }}
         </v-btn>
       </v-col>
     </v-row>
@@ -34,7 +38,7 @@
 </template>
 
 <script>
-import { computed, reactive } from '@vue/composition-api'
+import { onMounted, computed, reactive } from '@vue/composition-api'
 import TextInput from '../Common/InputText'
 import PasswordInput from '../Common/InputPassword'
 
@@ -66,14 +70,21 @@ export default {
       formTitle,
     }
   },
+  mounted() {
+    if (!this.isNew) {
+      this.fetchItem()
+    }
+  },
   methods: {
+    async fetchItem() {
+      const token = this.$store.state.token
+      const userId = this.$route.params.id
+      const { data } = await axios.get(`/api/account/${userId}?api_token=${token}`)
+      this.data.form = data
+    },
     async onSaveButtonClicked() {
-      try {
-        const token = this.$store.state.token
-        await axios.post(`/api/account?api_token=${token}`, this.data.form)
-      } catch (e) {
-        console.log(e.message)
-      }
+      const token = this.$store.state.token
+      await axios.post(`/api/account?api_token=${token}`, this.data.form)
 
       this.$router.push({ name: 'account' })
     },

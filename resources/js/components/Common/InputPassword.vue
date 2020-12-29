@@ -6,7 +6,7 @@
       <label class="label-position">{{ $attrs.label }}</label>
     </v-col>
     <v-col
-      cols="3">
+      cols="4">
       <v-text-field
         v-bind="$attrs"
         :append-icon="toggle.icon"

@@ -6,7 +6,7 @@
       <label class="label-position">{{ $attrs.label }}</label>
     </v-col>
     <v-col
-      cols="3">
+      :cols="columnSize">
       <v-text-field
         v-bind="$attrs"
         outlined
@@ -16,6 +16,17 @@
     </v-col>
   </v-row>
 </template>
+
+<script>
+export default {
+  props: {
+    columnSize: {
+      type: String,
+      default: '4'
+    },
+  },
+}
+</script>
 
 <style scoped>
 .label-position {
