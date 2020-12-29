@@ -19,6 +19,31 @@
               dense
               class="pl-2" />
           </v-col>
+          <v-col
+            cols="4">
+            <div class="pt-5">
+              <v-text-field
+                v-model="data.searchData"
+                label="入力してください"
+                hide-details
+                dense
+                outlined />
+            </div>
+          </v-col>
+          <v-col
+            cols="1">
+            <div class="pt-5">
+              <v-btn
+                color="success"
+                @click="onSearchButtonClicked">検索</v-btn>
+            </div>
+          </v-col>
+          <v-col
+            cols="1">
+            <div class="pt-5">
+              <v-btn>初期化</v-btn>
+            </div>
+          </v-col>
           <v-spacer />
           <v-col
             cols="11"
@@ -61,6 +86,7 @@ export default {
         {　text: '権限',　align: 'center',　value: 'permission_name'},
       ],
       users: [],
+      searchData: '',
     })
     return {
       data,
@@ -98,6 +124,17 @@ export default {
 
       this.fetchItem()
     },
+    async onSearchButtonClicked() {
+      const token = this.$store.state.token
+      const searchData = this.data.searchData
+      const { data } = await axios.get(`/api/account-search?api_token=${token}`, {
+        params: {
+          search: searchData
+        }
+      })
+
+      this.data.users = data
+    }
   }
 }
 </script>

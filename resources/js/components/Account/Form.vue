@@ -94,7 +94,6 @@ export default {
         const token = this.$store.state.token
         const userId = this.$route.params.id
         const response = await axios.put(`/api/account/${userId}?api_token=${token}`, this.data.form)
-        console.log(response)
         alert('更新成功しました')
       }
 

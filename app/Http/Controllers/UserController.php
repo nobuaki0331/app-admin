@@ -43,10 +43,27 @@ class UserController extends Controller
         return response($user);
     }
 
-    public function destroy() {
+    public function destroy()
+    {
         $inputs = request()->all();
         $userIds = Arr::pull($inputs, 'ids');
 
         return User::destroy($userIds);
+    }
+
+    public function search(Request $request)
+    {
+        $input = $request->search;
+
+        $query = User::query();
+
+        if ($input) {
+            $query->where('name', 'LIKE', "%{$input}%")
+                ->orWhere('email', 'LIKE', "%{$input}%")
+                ->orWhere('address', 'LIKE', "%{$input}%")
+                ->orWhere('tel', 'LIKE', "%{$input}%");
+        }
+
+        return $query->get();
     }
 }
