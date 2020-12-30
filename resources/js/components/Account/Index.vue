@@ -12,34 +12,42 @@
       <template #top>
         <v-row dense>
           <v-col
-            cols="2">
+            cols="12"
+            sm="2">
             <v-switch
               v-model="data.singleSelect"
-              label="Single select"
               dense
               class="pl-2" />
           </v-col>
           <v-col
-            cols="4">
-            <div class="pt-5">
+            cols="6"
+            sm="5"
+            md="4">
+            <div class="ml-1 pt-5">
               <v-text-field
                 v-model="data.searchData"
-                label="入力してください"
+                label="Search"
                 hide-details
                 dense
                 outlined />
             </div>
           </v-col>
           <v-col
-            cols="1">
-            <div class="pt-5">
+            cols="3"
+            sm="2"
+            md="1">
+            <div class="pt-5 text-right">
               <v-btn
                 color="success"
-                @click="onSearchButtonClicked">検索</v-btn>
+                @click="onSearchButtonClicked">
+                <v-icon>mdi-magnify</v-icon>
+              </v-btn>
             </div>
           </v-col>
           <v-col
-            cols="1">
+            cols="3"
+            sm="2"
+            md="1">
             <div class="pt-5">
               <v-btn>初期化</v-btn>
             </div>
@@ -138,4 +146,3 @@ export default {
   }
 }
 </script>
-
