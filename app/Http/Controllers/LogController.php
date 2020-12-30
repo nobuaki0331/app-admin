@@ -8,6 +8,9 @@ class LogController extends Controller
 {
     public function play()
     {
+        $started_at = request()->started_at;
+        $finished_at = request()->finished_at;
+
         $member = [
             [
                 'id' => 1,

@@ -3,7 +3,7 @@
     <v-col
       cols="2"
       offset="1">
-      <label class="label-position">{{ $attrs.label }}</label>
+      <label class="label-position font-weight-bold">{{ $attrs.label }}</label>
     </v-col>
     <v-col
       cols="4">

@@ -10,6 +10,7 @@
       show-select
       class="elevation-1">
       <template #top>
+        <v-card-title class="font-weight-bold">アカウント一覧</v-card-title>
         <v-row dense>
           <v-col
             cols="12"
@@ -49,7 +50,7 @@
             sm="2"
             md="1">
             <div class="pt-5">
-              <v-btn>初期化</v-btn>
+              <v-btn @click="onInitializeButtonClicked">初期化</v-btn>
             </div>
           </v-col>
           <v-spacer />
@@ -142,7 +143,12 @@ export default {
       })
 
       this.data.users = data
-    }
+    },
+    onInitializeButtonClicked() {
+      this.data.searchData = ''
+
+      this.fetchItem()
+    },
   }
 }
 </script>

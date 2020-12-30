@@ -4,7 +4,7 @@
     min-width="290px">
     <template v-slot:activator="{ on }">
       <v-text-field
-        prepend-icon="mdi-calendar"
+        prepend-inner-icon="mdi-calendar"
         readonly
         clearable
         outlined
@@ -25,7 +25,7 @@ export default {
   data() {
     return {
       menu: false
-    };
+    }
   },
 }
 </script>
