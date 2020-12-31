@@ -9,6 +9,9 @@
       item-key="name"
       show-select
       class="elevation-1">
+      <template v-slot:item.permission="{ item }">
+        {{ item.permission === 0 ? '無' : ' 有' }}
+      </template>
       <template #top>
         <v-card-title class="font-weight-bold">アカウント一覧</v-card-title>
         <v-row dense>
@@ -92,7 +95,7 @@ export default {
         {　text: '住所',　align: 'center',　value: 'address'},
         {　text: '電話番号',　align: 'center',　value: 'tel'},
         {　text: 'ブロック',　align: 'center',　value: 'prefecture.name'},
-        {　text: '権限',　align: 'center',　value: 'permission_name'},
+        {　text: '権限',　align: 'center',　value: 'permission'},
       ],
       users: [],
       searchData: '',
