@@ -2,7 +2,9 @@
 <div>
   <v-app-bar color="grey darken-4" dark app clipped-left>
     <v-app-bar-nav-icon @click="data.drawer=!data.drawer"></v-app-bar-nav-icon>
-    <v-toolbar-title>管理画面</v-toolbar-title>
+    <v-toolbar-title>
+      <router-link :to="{ name: 'main' }">管理画面</router-link>
+    </v-toolbar-title>
     <v-spacer></v-spacer>
     <span class="mr-2">{{ propUserName }}</span>
   </v-app-bar>
@@ -72,6 +74,7 @@ export default {
 
 <style scoped>
 .v-application a {
-    color: white;
+  text-decoration: none;
+  color: white;
 }
 </style>
