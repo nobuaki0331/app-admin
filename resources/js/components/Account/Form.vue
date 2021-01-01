@@ -23,6 +23,14 @@
     <text-input
       v-model="data.form.tel"
       label="電話番号" />
+    <radio-form
+      v-model="data.form.sex_code"
+      :items="data.sexCodeItems"
+      label="性別" />
+    <radio-form
+      v-model="data.form.permission"
+      :items="data.permissionItems"
+      label="権限" />
     <v-row>
       <v-spacer />
       <v-col
@@ -41,12 +49,14 @@
 import { computed, reactive } from '@vue/composition-api'
 import TextInput from '../Common/InputText'
 import PasswordInput from '../Common/InputPassword'
+import RadioForm from '../Common/RadioForm'
 
 export default {
   name: 'Form',
   components: {
     TextInput,
     PasswordInput,
+    RadioForm,
   },
   props: {
     isNew: {
@@ -63,6 +73,15 @@ export default {
         address: '',
         tel: '',
       },
+      sexCodeItems: [
+        { label: '不明', value: '不明' },
+        { label: '男性', value: '男性' },
+        { label: '女性', value: '女性' },
+      ],
+      permissionItems: [
+        { label: 'あり', value: 'あり' },
+        { label: 'なし', value: 'なし' },
+      ]
     })
     const formTitle = computed(() => props.isNew ? '登録画面' : '編集画面')
     return {

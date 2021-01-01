@@ -69,7 +69,33 @@ class User extends Authenticatable
 
     public function getPermissionAttribute($value): string
     {
-        return $value === 0 ? "有" : "無";
+        return $value == 0 ? "なし" : "あり";
     }
 
+    public function setSexCodeAttribute($value)
+    {
+        switch($value) {
+            case "不明" :
+                $this->attributes['sex_code'] = 0;
+                return;
+            case "男性" :
+                $this->attributes['sex_code'] = 1;
+                return;
+            case "女性" :
+                $this->attributes['sex_code'] = 2;
+                return;
+        }
+    }
+
+    public function setPermissionAttribute($value)
+    {
+        switch($value) {
+            case "なし" :
+                $this->attributes['sex_code'] = 0;
+                return;
+            case "あり" :
+                $this->attributes['sex_code'] = 1;
+                return;
+        }
+    }
 }
