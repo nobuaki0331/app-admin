@@ -29,7 +29,9 @@ class UserController extends Controller
             'email' => $request->email,
             'password' => $request->password,
             'address' => $request->address,
-            'tel' => $request->tel
+            'tel' => $request->tel,
+            'sex_code' => $request->sex_code,
+            'permission' => $request->permission,
         ]);
 
         return response($user);
@@ -37,8 +39,15 @@ class UserController extends Controller
 
     public function update(UpdateUserRequest $request)
     {
-        $user = new User();
-        $user->fill($request->all())->save();
+        $user = User::updateOrCreate([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => $request->password,
+            'address' => $request->address,
+            'tel' => $request->tel,
+            'sex_code' => $request->sex_code,
+            'permission' => $request->permission,
+        ]);
 
         return response($user);
     }

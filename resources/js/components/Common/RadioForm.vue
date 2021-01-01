@@ -8,8 +8,8 @@
     <v-col
       :cols="columnSize">
       <v-radio-group
-        v-bind="$attrs"
-        v-on="$listeners">
+        :value="value"
+        @change="updateValue">
         <v-radio
           v-for="(item, index) in items"
           :key="index"
@@ -32,6 +32,10 @@ export default {
       type: Array,
       default: null,
     },
+    value: {
+      type: String,
+      required: true,
+    },
   },
   setup: () => {
     const data = reactive({
@@ -41,6 +45,11 @@ export default {
       data,
     }
   },
+  methods: {
+    updateValue: function(value) {
+      this.$emit("input", value);
+    }
+  }
 }
 </script>
 

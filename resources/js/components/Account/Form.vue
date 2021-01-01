@@ -72,6 +72,8 @@ export default {
         password: '',
         address: '',
         tel: '',
+        sex_code: '',
+        permission: '',
       },
       sexCodeItems: [
         { label: '不明', value: '不明' },
