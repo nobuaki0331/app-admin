@@ -11,6 +11,8 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable;
 
+    const PERMISSION_USER = 0;
+    const PERMISSION_ADMIN = 1;
     /**
      * The attributes that are mass assignable.
      *

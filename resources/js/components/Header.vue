@@ -54,17 +54,22 @@ export default {
   setup: (props) => {
     const data = reactive({
       drawer: null,
-      items: [
-        { title: 'アカウント', icon: 'mdi-account-box', name: "account" },
-        { title: 'ログ一覧', icon: 'mdi-gavel', name: "log" },
-      ],
+      items: [],
       csrf_token: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
     })
     return {
       data,
     }
   },
+  mounted() {
+    this.fetchItem()
+  },
   methods: {
+    async fetchItem() {
+      const token = this.$store.state.token
+      const { data } = await axios.get(`/api/side-menus?api_token=${token}`)
+      this.data.items = data
+    },
     logout() {
       document.getElementById('logout-form').submit()
     },

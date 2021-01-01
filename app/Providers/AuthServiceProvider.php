@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
+use App\Models\User;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -25,6 +26,12 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+        Gate::define('account-index', function(User $user) {
+            return $user->permission >= User::PERMISSION_USER;
+        });
+
+        Gate::define('log-index', function(User $user) {
+            return $user->permission == User::PERMISSION_ADMIN;
+        });
     }
 }

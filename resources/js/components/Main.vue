@@ -108,7 +108,6 @@ export default {
   methods: {
     async fetchItem() {
       const token = this.$store.state.token
-      console.log(token)
       const { data } = await axios.get(`/api/user?api_token=${token}`)
       console.log(data)
       this.data.user = data

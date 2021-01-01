@@ -9,6 +9,7 @@ use App\Http\Controllers\HomeController;
 
 Route::group(['middleware' => ['auth:api']], function(){
     Route::get('user', [HomeController::class, 'index']);
+    Route::get('side-menus', [HomeController::class, 'sideMenu']);
     Route::get('log/playlog', [LogController::class, 'play']);
     Route::resource('account', UserController::class, ['except' => ['create', 'destroy']]);
     Route::delete('account', [UserController::class, 'destroy']);

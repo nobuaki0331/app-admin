@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
-
 use Illuminate\Http\Request;
+use App\Actions\Home\GetSideMenu;
 
 class HomeController extends Controller
 {
@@ -27,5 +27,12 @@ class HomeController extends Controller
         $user = auth()->user();
 
         return response($user);
+    }
+
+    public function sideMenu(GetSideMenu $action)
+    {
+        $sideMenus = $action->execute();
+
+        return response($sideMenus);
     }
 }
