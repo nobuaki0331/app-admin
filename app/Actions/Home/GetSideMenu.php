@@ -24,6 +24,13 @@ class GetSideMenu
           'name' => 'log',
         ];
       }
+      if (Gate::allows('vuex-index')) {
+        $items[] = [
+          'title' => 'Vuex',
+          'icon' => 'mdi-eye',
+          'name' => 'hoge',
+        ];
+      }
 
       return $items;
     }

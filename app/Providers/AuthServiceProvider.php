@@ -33,5 +33,9 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('log-index', function(User $user) {
             return $user->permission == User::PERMISSION_ADMIN;
         });
+
+        Gate::define('vuex-index', function(User $user) {
+            return $user->permission >= User::PERMISSION_USER;
+        });
     }
 }
