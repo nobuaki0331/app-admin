@@ -26,9 +26,9 @@ class GetSideMenu
       }
       if (Gate::allows('vuex-index')) {
         $items[] = [
-          'title' => 'Vuex',
+          'title' => '管理者へ問合せ',
           'icon' => 'mdi-eye',
-          'name' => 'hoge',
+          'name' => 'contact',
         ];
       }
 

@@ -4,7 +4,7 @@ import Main from './components/Main'
 import AccountIndex from './components/Account/Index'
 import AccountForm from './components/Account/Form'
 import LogIndex from './components/Log/Index'
-import VuexIndex from './components/Vuex/Index'
+import ContactIndex from './components/Contact/Index'
 
 Vue.use(VueRouter)
 
@@ -43,9 +43,9 @@ const routes = [
     component: LogIndex,
   },
   {
-    path: '/vuex',
-    name: 'hoge',
-    component: VuexIndex,
+    path: '/contact',
+    name: 'contact',
+    component: ContactIndex,
   },
 ]
 

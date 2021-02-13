@@ -14,4 +14,6 @@ Route::group(['middleware' => ['auth:api']], function(){
     Route::resource('account', UserController::class, ['except' => ['create', 'destroy']]);
     Route::delete('account', [UserController::class, 'destroy']);
     Route::get('account-search', [UserController::class, 'search']);
+    Route::post('contact', [ContactController::class, 'store']);
 });
+

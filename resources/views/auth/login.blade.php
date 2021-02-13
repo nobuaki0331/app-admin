@@ -32,22 +32,6 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="captcha" class="col-md-4 control-label text-md-right">Input captcha</label>
-                            <div class="col-md-6">
-                                <input id="captcha" type="text" class="form-control" name="captcha">
-                                @if ($errors->has('captcha'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('captcha') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-5 offset-md-1">
-                                {!! captcha_img() !!}
-                            </div>
-                        </div>
-                        <div class="form-group row">
                             <div class="col-md-6 offset-md-4">
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
