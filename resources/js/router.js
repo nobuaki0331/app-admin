@@ -5,6 +5,7 @@ import AccountIndex from './components/Account/Index'
 import AccountForm from './components/Account/Form'
 import LogIndex from './components/Log/Index'
 import ContactIndex from './components/Contact/Index'
+import ImageUpload from './components/Image/Upload'
 
 Vue.use(VueRouter)
 
@@ -46,6 +47,11 @@ const routes = [
     path: '/contact',
     name: 'contact',
     component: ContactIndex,
+  },
+  {
+    path: '/image',
+    name: 'image',
+    component: ImageUpload,
   },
 ]
 

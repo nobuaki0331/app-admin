@@ -27,6 +27,7 @@ class User extends Authenticatable
         'permission',
         'sex_code',
         'prefecture_id',
+        'image',
     ];
 
     /**

@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LogController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ImageController;
 
 
 Route::group(['middleware' => ['auth:api']], function(){
@@ -15,5 +16,7 @@ Route::group(['middleware' => ['auth:api']], function(){
     Route::delete('account', [UserController::class, 'destroy']);
     Route::get('account-search', [UserController::class, 'search']);
     Route::post('contact', [ContactController::class, 'store']);
+    // 画像保存用api
+    Route::post('image', [ImageController::class, 'store']);
 });
 

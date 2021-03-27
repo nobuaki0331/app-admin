@@ -31,6 +31,11 @@ class GetSideMenu
           'name' => 'contact',
         ];
       }
+      $items[] = [
+        'title' => '画像アップロード',
+        'icon' => '',
+        'name' => 'image'
+      ];
 
       return $items;
     }
