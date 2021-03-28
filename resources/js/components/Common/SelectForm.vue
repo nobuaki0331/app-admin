@@ -8,34 +8,41 @@
     <v-col
       :cols="columnSize">
       <v-select
-        v-model="select"
-        :hint="`${select.state}, ${select.abbr}`"
         :items="items"
-        item-text="state"
-        item-value="abbr"
-        label="Select"
-        persistent-hint
-        return-object
-        single-line />
+        item-text="name"
+        item-value="value"
+        outlined
+        dense />
     </v-col>
   </v-row>
 </template>
 
 <script>
-  export default {
-    data () {
-      return {
-        select: { state: 'Florida', abbr: 'FL' },
-        items: [
-          { state: 'Florida', abbr: 'FL' },
-          { state: 'Georgia', abbr: 'GA' },
-          { state: 'Nebraska', abbr: 'NE' },
-          { state: 'California', abbr: 'CA' },
-          { state: 'New York', abbr: 'NY' },
-        ],
-      }
+export default {
+  name: 'SelectForm',
+  props: {
+    columnSize: {
+      type: String,
+      default: '4'
     },
+  },
+  data () {
+    return {
+      items: [],
+    }
+  },
+  mounted() {
+    this.fetchItems()
+  },
+  methods: {
+    async fetchItems() {
+      const token = this.$store.state.token
+      const { data } = await axios.get(`/api/prefectures?api_token=${token}`)
+      this.items = [{ id: '', name: '-- 選択してください--'}, ...data]
+    }
+
   }
+}
 </script>
 
 <style scoped>

@@ -7,6 +7,12 @@
     <text-input
       v-model="form.name"
       label="名前" />
+    <select-form
+      v-model="form.prefecture"
+      label="都道府県" />
+    <select-year
+      v-model="form.year"
+      label="誕生年" />
     <text-input
       v-model="form.email"
       label="メールアドレス" />
@@ -33,14 +39,21 @@
 
 <script>
 import _ from 'lodash'
+import SampleText from '../Common/SampleText'
 import TextInput from '../Common/InputText'
 import TextArea from '../Common/InputTextarea'
+import SelectForm from '../Common/SelectForm'
+import SelectYear from '../Common/SelectYear'
+
 
 export default {
   name: 'ContactIndex',
   components: {
+    SampleText,
     TextInput,
     TextArea,
+    SelectForm,
+    SelectYear,
   },
   props: {
     isNew: {
@@ -56,30 +69,15 @@ export default {
         title: '',
         inquiry: '',
         token: '',
+        gender: '',
+        year: '',
       },
-    }
-  },
-  watch: {
-    form: {
-      handler:  _.debounce(function() {
-        this.form = {
-          name: '',
-          email: '',
-          title: '',
-          inquiry: '',
-          token: '',
-        }
-      }, 10000),
-      deep: true
     }
   },
   created() {
     this.fetchItem()
   },
   methods: {
-    clearForm() {
-      console.log('hoge')
-    },
     fetchItem() {
     },
     async onSaveButtonClicked(){
