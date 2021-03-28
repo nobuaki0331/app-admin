@@ -10,6 +10,6 @@ class PrefectureController extends Controller
     public function getPrefecture()
     {
         $prefectures = Prefecture::all();
-        return response(($prefectures));
+        return response($prefectures);
     }
 }
