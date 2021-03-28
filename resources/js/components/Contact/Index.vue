@@ -69,7 +69,7 @@ export default {
         title: '',
         inquiry: '',
         token: '',
-        gender: '',
+        prefecture: '',
         year: '',
       },
     }

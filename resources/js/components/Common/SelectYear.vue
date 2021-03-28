@@ -12,7 +12,8 @@
         item-text="text"
         item-value="value"
         outlined
-        dense />
+        dense
+        v-on="$listeners" />
     </v-col>
   </v-row>
 </template>
